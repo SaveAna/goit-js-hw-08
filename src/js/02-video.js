@@ -14,14 +14,16 @@ player.getVideoTitle().then(function (title) {
 });
 
 const onTimeUpdate = function (currentTime) {
-  localStorage.setItem(
-    'videoplayer-current-time',
-    JSON.stringify(currentTime.seconds)
+  throttle(
+    localStorage.setItem(
+      'videoplayer-current-time',
+      JSON.stringify(currentTime.seconds)
+    ),
+    1000
   );
 };
 
-const throttledTimeUpdate = throttle(onTimeUpdate, 1000);
-player.on('timeupdate', throttledTimeUpdate);
+player.on('timeupdate', onTimeUpdate);
 
 player
   .setCurrentTime(time)
