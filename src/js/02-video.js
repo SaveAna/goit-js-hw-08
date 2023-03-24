@@ -25,6 +25,7 @@ player.on('timeupdate', onTimeUpdate);
 player
   .setCurrentTime(time)
   .then(function (seconds) {
+    let minutes = 0;
     minutes = Math.floor(time / 60);
     seconds = Math.floor(time % 60);
     console.log(`Video was set to ${minutes} minutes and ${seconds} seconds`);
