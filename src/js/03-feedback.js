@@ -35,8 +35,8 @@ function onFormSubmit(event) {
 function populateFormData() {
   if (savedFormData) {
     const { email, message } = savedFormData;
-    refs.emailInput.value = email;
-    refs.messageInput.value = message;
+    refs.emailInput.value = email || '';
+    refs.messageInput.value = message || '';
     formData.email = email;
     formData.message = message;
   }
